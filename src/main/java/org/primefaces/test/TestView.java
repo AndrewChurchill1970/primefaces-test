@@ -32,6 +32,12 @@ public class TestView implements Serializable {
                 new TestObject("The Bodyguard", "Whitney Houston", 1992),
                 new TestObject("The Dark Side of the Moon", "Pink Floyd", 1973)
         ));
+
+        FacesContext fc = FacesContext.getCurrentInstance();
+        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "This is my message", "my title"));
+        fc.getExternalContext().getFlash().setKeepMessages(true);
+        fc.getExternalContext().getFlash().setRedirect(true);
+        fc.getExternalContext().redirect("test.xhtml");
     }
 
 }
